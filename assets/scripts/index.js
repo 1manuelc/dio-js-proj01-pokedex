@@ -1,7 +1,5 @@
 const listContainer = document.getElementById("pokemon__list");
 const btnLoadMore = document.getElementById("button__loadmore");
-const btnSwitchTheme = document.getElementById("button__switchTheme");
-let themeIsLight = false;
 
 const limit = 10;
 let offset = 0;
@@ -33,17 +31,6 @@ btnLoadMore.addEventListener("click", () => {
 	}
 });
 
-btnSwitchTheme.addEventListener("click", () => {
-	if (themeIsLight) {
-		htmlHandler.setDarkTheme();
-		themeIsLight = false;
-	} else {
-		htmlHandler.setLightTheme();
-		themeIsLight = true;
-	}
-});
-
 (function main() {
-	htmlHandler.addLoadingAnimation();
 	loadPokemons(offset, limit);
 })();
