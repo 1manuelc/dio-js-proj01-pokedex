@@ -1,0 +1,71 @@
+@import url("./pokedex.css");
+
+:root {
+	font-size: 62.5%;
+	box-sizing: border-box;
+	text-size-adjust: 100%;
+
+	--body-bg-color: #1a1a1a;
+	--main-bg-color: #2b2b2b;
+	--text-color: #fff;
+
+	--theme-switch-transition: background-color 0.2s ease;
+}
+
+* {
+	font-family: "Roboto", sans-serif;
+	font-size: 1.6rem;
+}
+
+body {
+	display: flex;
+	flex-flow: column;
+	justify-content: space-between;
+	align-items: center;
+}
+
+button {
+	cursor: pointer;
+}
+
+footer {
+	width: 100%;
+	margin-top: 4rem;
+	padding: 2rem 0;
+
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+	align-items: center;
+
+	text-align: center;
+	color: var(--text-color);
+	background-color: var(--main-bg-color);
+	transition: var(--theme-switch-tranisition);
+}
+
+.footer_icons8 p,
+.footer_icons8 a {
+	margin: 0;
+	padding: 0;
+}
+
+.footer_icons8 {
+	display: flex;
+	flex-flow: column;
+	gap: 1rem;
+}
+
+@media screen and (max-width: 860px) {
+	body {
+		height: auto;
+		background-color: var(--main-bg-color);
+	}
+}
+
+@media screen and (min-width: 860px) {
+	body {
+		justify-content: space-between;
+		height: 100vh;
+	}
+}

@@ -1,0 +1,252 @@
+@import url("type-colors.css");
+
+:root {
+	--theme-switch-tranisition: background-color 0.2s ease;
+}
+
+body {
+	background-color: var(--body-bg-color);
+	transition: var(--theme-switch-transition);
+}
+
+main {
+	max-width: 1100px;
+	width: 90vw;
+	padding: 1rem;
+
+	background-color: var(--main-bg-color);
+	border-radius: 1rem;
+	transition: var(--theme-switch-transition);
+}
+
+@media screen and (max-width: 400px) {
+	main header {
+		flex-flow: column;
+	}
+}
+
+main header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	padding: 2rem;
+	margin-bottom: 2rem;
+}
+
+main header h1 {
+	color: var(--text-color);
+	transition: var(--theme-switch-transition);
+}
+
+main header #button__switchTheme img[alt="Sun icon"] {
+	filter: invert();
+}
+
+main header #button__switchTheme img[alt="Moon icon"] {
+	display: none;
+}
+
+#button__switchTheme {
+	width: auto;
+	margin: 0;
+	padding: 0.8rem;
+
+	background-color: transparent;
+	border: 0.1rem solid #8d8d8d;
+	border-radius: 1rem;
+	text-decoration: none;
+	color: var(--text-color);
+
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 0.8rem;
+}
+
+#button__switchTheme img {
+	height: 2rem;
+}
+
+.pokemons__container {
+	margin: 0;
+	padding: 0;
+
+	list-style: none;
+
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 1rem;
+}
+
+.pokemon__item {
+	height: 12rem;
+	padding: 2rem;
+
+	border-radius: 2rem;
+
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+	align-items: flex-start;
+}
+
+.pokemon__header {
+	width: 100%;
+
+	display: flex;
+	justify-content: space-between;
+}
+
+.pokemon__name {
+	color: #fff;
+	text-transform: capitalize;
+	font-weight: 700;
+	font-size: 1.8rem;
+}
+
+.pokemon__number {
+	color: #00000050;
+	font-weight: 700;
+	font-size: 1.8rem;
+}
+
+.pokemon__main {
+	width: 100%;
+
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	position: relative;
+}
+
+.pokemon__image {
+	max-height: 10rem;
+	max-width: 10rem;
+	align-self: flex-end;
+}
+
+.pokemon__types {
+	margin: 0;
+	padding: 0;
+
+	list-style: none;
+
+	display: flex;
+	flex-flow: column;
+	gap: 0.7rem;
+}
+
+.pokemon__type {
+	height: 2rem;
+	padding: 0.4rem;
+
+	border-radius: 1.6rem;
+	font-weight: 700;
+	filter: brightness(0.9);
+	text-align: center;
+	color: #fff;
+}
+
+.loadMore__container {
+	width: 100%;
+	padding-top: 2rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#button__loadmore {
+	padding: 0.8rem;
+	margin: 2rem 0;
+	background-color: #6c79db;
+	color: #fff;
+	border: none;
+	border-radius: 1rem;
+
+	transition: background-color 0.05s ease-in-out;
+}
+
+#button__loadmore:hover {
+	background-color: #626dbd;
+}
+
+#button__loadmore:active {
+	background-color: #4f5798;
+}
+
+#button__loadmore:disabled {
+	background-color: #8d8d8d;
+	opacity: 0.5;
+	cursor: not-allowed;
+}
+
+.loading__container {
+	display: flex;
+	gap: 0.5rem;
+}
+
+.loading__circle {
+	width: 2.5rem;
+	height: 2.5rem;
+	margin: 2rem 0;
+
+	border-radius: 50%;
+	background-image: url("https://th.bing.com/th/id/R.60c891136928449267b40976ef85326b?rik=LOQmKxsm7P08gw&riu=http%3a%2f%2fwww.clker.com%2fcliparts%2f7%2fz%2fV%2fi%2f7%2f2%2fpokeball-icon.svg.hi.png&ehk=wNMCMxWyfPVsSqD%2blrFdObumkc%2bncxUweLNt5R6z8Jg%3d&risl=&pid=ImgRaw&r=0");
+	background-size: 2.5rem;
+
+	animation: load 0.8s ease-in-out infinite;
+}
+
+@keyframes load {
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+body.theme--dark {
+	background-color: var(--dark-body-color);
+}
+
+main.theme--dark {
+	background-color: var(--dark-main-color);
+}
+
+@media screen and (max-width: 500px) {
+	.pokemons__container {
+		display: grid;
+		grid-template-columns: 1fr;
+	}
+
+	main {
+		width: calc(100vw - 6rem);
+	}
+}
+
+@media screen and (min-width: 500px) {
+	.pokemons__container {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media screen and (min-width: 780px) {
+	.pokemons__container {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+@media screen and (min-width: 1060px) {
+	.pokemons__container {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+	}
+}
+
+@media screen and (min-width: 1450px) {
+	.pokemons__container {
+		display: grid;
+		grid-template-columns: repeat(5, 1fr);
+	}
+}
