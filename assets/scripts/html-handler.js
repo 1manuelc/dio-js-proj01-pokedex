@@ -54,9 +54,13 @@ const mapPokemonTypesToListItems = (types) => {
 	);
 };
 
+const mapPokemonStatsToListItems = (pokemonObject) => {
+	return pokemonObject.baseStats.map((stat) => `<li><span>${stat}</span></li>`);
+};
+
 htmlHandler.convertPokemonToListItem = (pokemon) => {
 	return `
-  <li class="pokemon__item pokemon__type--${pokemon.mainType.toLowerCase()}">
+  <li class="pokemon__item pokemon__type--${pokemon.mainType.toLowerCase()}" onclick="showPokemonModal();">
     <span class="pokemon__header">
       <span class="pokemon__name">${pokemon.name}</span>
       <span class="pokemon__number">#${pokemon.number}</span>

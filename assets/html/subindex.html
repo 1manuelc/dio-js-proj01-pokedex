@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<link rel="stylesheet" href="subindex.css" />
+	</head>
+	<body>
+		<section class="bound__external" onclick="closePokemonModal();">
+			<article class="pokemon__modal">
+				<div class="pokemon__modal--header">
+					<i class="fa-solid fa-arrow-left" onclick="closePokemonModal();"></i>
+
+					<div class="pokemon__modal--infos">
+						<span class="pokemon__modal--supinfos">
+							<span class="pokemon__modal--name">Bulbasaur</span
+							><span class="pokemon__modal--number">#1</span>
+						</span>
+
+						<span class="pokemon__typeContainer">
+							<ol class="pokemon__modal--types">
+								<li class="pokemon__modal--type pokemon__type--grass">grass</li>
+								<li class="pokemon__modal--type pokemon__type--poison">
+									poison
+								</li>
+							</ol>
+						</span>
+					</div>
+
+					<div class="pokemon__modal--image">
+						<img
+							src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg"
+							alt="" />
+					</div>
+				</div>
+
+				<div class="pokemon__modal--details">
+					<nav class="details__navbar">
+						<ul>
+							<li>About</li>
+							<li class="active">Base Stats</li>
+							<li>Moves</li>
+						</ul>
+					</nav>
+
+					<div id="details__divider">
+						<div id="details__divider--current"></div>
+					</div>
+
+					<div class="details__content">
+						<div class="details__content--about">
+							<ul class="description">
+								<li>Species</li>
+								<li>Height</li>
+								<li>Weight</li>
+								<li>Abilities</li>
+							</ul>
+
+							<ul class="values">
+								<li>Seed</li>
+								<li>Height</li>
+								<li>Weight</li>
+								<li>Overgrow, Chlorophyl</li>
+							</ul>
+						</div>
+
+						<div class="details__content--stats">
+							<ul class="description">
+								<li>HP</li>
+								<li>Attack</li>
+								<li>Defense</li>
+								<li>Esp. Atk.</li>
+								<li>Esp. Def.</li>
+								<li>Speed</li>
+								<li>Total</li>
+							</ul>
+
+							<ul class="values">
+								<li><span>45</span></li>
+								<li><span>60</span></li>
+								<li><span>48</span></li>
+								<li><span>66</span></li>
+								<li><span>66</span></li>
+								<li><span>46</span></li>
+								<li><span>307</span></li>
+							</ul>
+
+							<ul class="meters">
+								<li><div class="currentMeter bg__range--medium"></div></li>
+								<li><div class="currentMeter bg__range--good"></div></li>
+								<li><div class="currentMeter bg__range--medium"></div></li>
+								<li><div class="currentMeter bg__range--good"></div></li>
+								<li><div class="currentMeter bg__range--good"></div></li>
+								<li><div class="currentMeter bg__range--medium"></div></li>
+								<li>
+									<div
+										id="totalMeter"
+										class="currentMeter bg__range--medium"></div>
+								</li>
+							</ul>
+						</div>
+
+						<div class="details__content--moves">
+							<p>Razor-wind, Swords-dance, Cut, Bind, Vine whip...</p>
+						</div>
+					</div>
+				</div>
+			</article>
+		</section>
+
+		<script
+			src="https://kit.fontawesome.com/cbb97ad2f4.js"
+			crossorigin="anonymous"></script>
+	</body>
+</html>

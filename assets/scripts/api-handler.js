@@ -1,12 +1,21 @@
 const apiHandler = {};
+const pokemonCacheList = [];
 
 const convertJsonPokemonToModel = (jsonPokemon) => {
-	return (actualPokemon = new Pokemon(
+	const actualPokemon = new Pokemon(
 		jsonPokemon.order,
 		jsonPokemon.name,
-		jsonPokemon.types.map((number) => number.type.name),
-		jsonPokemon.sprites.other.dream_world.front_default
-	));
+		jsonPokemon.types.map((slot) => slot.type.name),
+		jsonPokemon.sprites.other.dream_world.front_default,
+		jsonPokemon.species.name,
+		jsonPokemon.height / 10,
+		jsonPokemon.weight / 10,
+		jsonPokemon.abilities.map((slot) => slot.ability.name),
+		jsonPokemon.stats.map((slot) => parseInt(slot.base_stat)),
+		jsonPokemon.moves.map((slot) => slot.move.name)
+	);
+	pokemonCacheList.push(actualPokemon);
+	return actualPokemon;
 };
 
 apiHandler.getPokemonDetail = async (pokemon) => {

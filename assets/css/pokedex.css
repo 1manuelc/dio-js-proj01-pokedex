@@ -83,12 +83,19 @@ main header #button__switchTheme img[alt="Moon icon"] {
 	height: 12rem;
 	padding: 2rem;
 
-	border-radius: 2rem;
+	border-radius: 1rem;
 
 	display: flex;
 	flex-flow: column;
 	justify-content: center;
 	align-items: flex-start;
+
+	transition: outline .2s ease;
+}
+
+.pokemon__item:hover {
+	outline: .25rem solid #979797;
+	outline-offset: .3rem;
 }
 
 .pokemon__header {
@@ -159,7 +166,7 @@ main header #button__switchTheme img[alt="Moon icon"] {
 #button__loadmore {
 	padding: 0.8rem;
 	margin: 2rem 0;
-	background-color: #6c79db;
+	background-color: var(--hightlight-color);
 	color: #fff;
 	border: none;
 	border-radius: 1rem;
@@ -168,15 +175,15 @@ main header #button__switchTheme img[alt="Moon icon"] {
 }
 
 #button__loadmore:hover {
-	background-color: #626dbd;
+	background-color: var(--highlighter-color);
 }
 
-#button__loadmore:active {
-	background-color: #4f5798;
+#button__loadmore:focus {
+	background-color: var(--highlight-click-color);
 }
 
 #button__loadmore:disabled {
-	background-color: #8d8d8d;
+	background-color: var(--disabled-color);
 	opacity: 0.5;
 	cursor: not-allowed;
 }
