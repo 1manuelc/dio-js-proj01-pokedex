@@ -32,18 +32,12 @@ main header h1 {
 	transition: var(--theme-switch-transition);
 }
 
-main header #button__switchTheme img[alt="Sun icon"] {
-	filter: invert();
-	display: none;
-}
-
 #button__switchTheme {
 	width: auto;
 	margin: 0;
 	padding: 0.8rem;
 
 	background-color: transparent;
-	border: 0.1rem solid #8d8d8d;
 	color: inherit;
 
 	border-radius: 1rem;
@@ -55,7 +49,7 @@ main header #button__switchTheme img[alt="Sun icon"] {
 	gap: 0.8rem;
 }
 
-#button__switchTheme img {
+#button__switchTheme i {
 	height: 2rem;
 }
 

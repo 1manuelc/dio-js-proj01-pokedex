@@ -119,27 +119,15 @@ const definePokemonMeters = (pokemonObject) => {
 		let actualColorClass;
 
 		if (i != 6) {
-			if (actualStat > 100) actualMeter.style.width = "100%";
-			else actualMeter.style.width = `${actualStat}%`;
-
+			actualMeter.style.width = `${actualStat}%`;
 			actualColorClass = classificateStatInterval(actualStat);
 		} else {
 			const calculatedTotal = (actualStat * 100) / 700;
-
-			if (calculatedTotal > 100) actualMeter.style.width = "100%";
-			else actualMeter.style.width = `${calculatedTotal}%`;
-
+			actualMeter.style.width = `${calculatedTotal}%`;
 			actualColorClass = classificateStatInterval(calculatedTotal);
 		}
 
 		actualMeter.classList.add(actualColorClass);
-	}
-};
-
-const toggleBackgroundBlur = () => {
-	if (window.innerWidth > 700) {
-		document.querySelector("main").classList.toggle("filter--blur");
-		document.querySelector("footer").classList.toggle("filter--blur");
 	}
 };
 
@@ -176,15 +164,20 @@ const showPokemonModal = (themeIsLight) => {
 
 	showDetailsContent(0);
 	definePokemonMeters(clickedPokemonObject);
-	toggleBackgroundBlur();
-	toggleMobileBackground();
+
+	setTimeout(() => toggleMobileBackground(), 310);
 };
 
 const closePokemonModal = () => {
-	const bodyElement = document.querySelector("body");
-	sectionElement.remove();
+	document
+		.querySelector("section.bound__external")
+		.classList.add("modal--close");
+
 	toggleMobileBackground();
-	toggleBackgroundBlur();
+
+	setTimeout(() => {
+		sectionElement.remove();
+	}, 310);
 };
 
 const showDetailsContent = (option) => {
@@ -220,7 +213,7 @@ const showDetailsContent = (option) => {
 			statsContent.classList.remove("is--invisible");
 			movesContent.classList.add("is--invisible");
 
-			contentSlider.style.left = "40%";
+			contentSlider.style.left = "39.5%";
 
 			break;
 		case 2:

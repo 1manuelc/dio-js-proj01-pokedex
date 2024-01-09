@@ -4,8 +4,7 @@ const loadingContainer = document.querySelector(".loading__container");
 
 const btnSwitchTheme = document.getElementById("button__switchTheme");
 let themeIsLight = true;
-const moonIcon = document.getElementById("icon__moon");
-const sunIcon = document.getElementById("icon__sun");
+const moonIcon = document.querySelector("i.fa-moon");
 
 htmlHandler.addLoadingAnimation = () => {
 	loadingContainer.style.display = "flex";
@@ -23,12 +22,8 @@ btnSwitchTheme.addEventListener("click", () => {
 	document.querySelector("footer").classList.toggle("theme--dark");
 
 	if (themeIsLight) {
-		sunIcon.style.display = "block";
-		moonIcon.style.display = "none";
 		themeIsLight = false;
 	} else {
-		sunIcon.style.display = "none";
-		moonIcon.style.display = "block";
 		themeIsLight = true;
 	}
 });

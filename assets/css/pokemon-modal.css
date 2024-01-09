@@ -1,3 +1,22 @@
+@keyframes meter-grow {
+	from {
+		transform: translateX(-25rem);
+	}
+
+	to {
+		transform: translateX(0);
+	}
+}
+
+@keyframes fade {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
 section.bound__external {
 	height: 100%;
 	width: 100%;
@@ -10,7 +29,13 @@ section.bound__external {
 	z-index: 1;
 	position: fixed;
 	bottom: 0;
-	filter: blur(1);
+
+	animation: fade 0.3s linear;
+	transition: opacity .3s linear;
+}
+
+.modal--close {
+	opacity: 0;
 }
 
 .pokemon__modal {
@@ -168,8 +193,6 @@ ol.pokemon__modal--types li {
 	position: absolute;
 	top: -0.1rem;
 
-	left: 40%; /* 0% for about, 40% for stats, 80% for moves*/
-
 	border-radius: 5rem;
 	background: #6c79db;
 
@@ -236,16 +259,11 @@ ul.description {
 
 	border-radius: 2rem;
 	background-color: #a2a2a250;
+	overflow: hidden;
 }
 
 .currentMeter {
 	animation: meter-grow 1s ease-in-out;
-}
-
-@keyframes meter-grow {
-	from {
-		width: 0%;
-	}
 }
 
 .meters li .bg__range--bad {
