@@ -4,17 +4,11 @@
 	--theme-switch-tranisition: background-color 0.2s ease;
 }
 
-body {
-	background-color: var(--body-bg-color);
-	transition: var(--theme-switch-transition);
-}
-
 main {
 	max-width: 1100px;
 	width: 90vw;
 	padding: 1rem;
 
-	background-color: var(--main-bg-color);
 	border-radius: 1rem;
 	transition: var(--theme-switch-transition);
 }
@@ -35,15 +29,11 @@ main header {
 }
 
 main header h1 {
-	color: var(--text-color);
 	transition: var(--theme-switch-transition);
 }
 
 main header #button__switchTheme img[alt="Sun icon"] {
 	filter: invert();
-}
-
-main header #button__switchTheme img[alt="Moon icon"] {
 	display: none;
 }
 
@@ -54,9 +44,10 @@ main header #button__switchTheme img[alt="Moon icon"] {
 
 	background-color: transparent;
 	border: 0.1rem solid #8d8d8d;
+	color: inherit;
+
 	border-radius: 1rem;
 	text-decoration: none;
-	color: var(--text-color);
 
 	display: flex;
 	justify-content: space-between;
@@ -90,12 +81,13 @@ main header #button__switchTheme img[alt="Moon icon"] {
 	justify-content: center;
 	align-items: flex-start;
 
-	transition: outline .2s ease;
+	transition: filter .2s ease, transform .2s linear;
+	cursor: pointer;
 }
 
 .pokemon__item:hover {
-	outline: .25rem solid #979797;
-	outline-offset: .3rem;
+	filter: brightness(1.1);
+	transform: scale(1.05);
 }
 
 .pokemon__header {
@@ -226,7 +218,8 @@ main.theme--dark {
 	}
 
 	main {
-		width: calc(100vw - 6rem);
+		width: calc(100vw - 2rem);
+		border-radius: 0rem;
 	}
 }
 

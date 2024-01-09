@@ -1,3 +1,5 @@
+let sectionElement;
+
 const getCachedListPokemonInfos = (pokemonName) => {
 	return pokemonCacheList.filter((element) => element.name == pokemonName)[0];
 };
@@ -52,7 +54,9 @@ const buildPokemonModal = (pokemonObject) => {
 
 						<ul class="values">
 							<li>${pokemonObject.species}</li>
-							<li>${pokemonObject.height.toFixed(2)}m (${(pokemonObject.height * 100).toFixed(0)}cm)</li>
+							<li>${pokemonObject.height.toFixed(2)}m (${(pokemonObject.height * 100).toFixed(
+		0
+	)}cm)</li>
 							<li>${pokemonObject.weight}kg</li>
               <li>${pokemonObject.abilities.map((ab) => ab).join(", ")}.</li>
 						</ul>
@@ -74,22 +78,24 @@ const buildPokemonModal = (pokemonObject) => {
 						</ul>
 
 						<ul class="meters">
-								<li><div class="currentMeter bg__range--medium" data-width="45"></div></li>
-								<li><div class="currentMeter bg__range--good"></div></li>
-								<li><div class="currentMeter bg__range--medium"></div></li>
-								<li><div class="currentMeter bg__range--good"></div></li>
-								<li><div class="currentMeter bg__range--good"></div></li>
-								<li><div class="currentMeter bg__range--medium"></div></li>
+								<li><div class="currentMeter"></div></li>
+								<li><div class="currentMeter"></div></li>
+								<li><div class="currentMeter"></div></li>
+								<li><div class="currentMeter"></div></li>
+								<li><div class="currentMeter"></div></li>
+								<li><div class="currentMeter"></div></li>
 								<li>
 									<div
 										id="totalMeter"
-										class="currentMeter bg__range--medium"></div>
+										class="currentMeter"></div>
 								</li>
 							</ul>
 						</div>
 
 					<div class="details__content--moves">
-						<p>(${pokemonObject.moves.length})\n${pokemonObject.moves.map((mv) => mv).join(", ")}.</p>
+						<p>(${pokemonObject.moves.length})\n${pokemonObject.moves
+		.map((mv) => mv)
+		.join(", ")}.</p>
 					</div>
 				</div>
 			</div>
@@ -97,7 +103,38 @@ const buildPokemonModal = (pokemonObject) => {
 	`;
 };
 
-let sectionElement;
+const classificateStatInterval = (stat) => {
+	if (stat < 35) return "bg__range--bad";
+	else if (stat < 50) return "bg__range--medium";
+	else if (stat < 75) return "bg__range--good";
+	else return "bg__range--excellent";
+};
+
+const definePokemonMeters = (pokemonObject) => {
+	let meters = document.querySelectorAll(`.currentMeter`);
+
+	for (let i = 0; i < 7; i++) {
+		const actualMeter = meters[i];
+		const actualStat = pokemonObject.baseStats[i];
+		let actualColorClass;
+
+		if (i != 6) {
+			if (actualStat > 100) actualMeter.style.width = "100%";
+			else actualMeter.style.width = `${actualStat}%`;
+
+			actualColorClass = classificateStatInterval(actualStat);
+		} else {
+			const calculatedTotal = (actualStat * 100) / 700;
+
+			if (calculatedTotal > 100) actualMeter.style.width = "100%";
+			else actualMeter.style.width = `${calculatedTotal}%`;
+
+			actualColorClass = classificateStatInterval(calculatedTotal);
+		}
+
+		actualMeter.classList.add(actualColorClass);
+	}
+};
 
 const toggleBackgroundBlur = () => {
 	if (window.innerWidth > 700) {
@@ -113,7 +150,7 @@ const toggleMobileBackground = () => {
 	}
 };
 
-const showPokemonModal = () => {
+const showPokemonModal = (themeIsLight) => {
 	const clickedLi = event.currentTarget;
 	const clickedPokemonName = clickedLi.innerText
 		.split("\n", 1)
@@ -129,7 +166,16 @@ const showPokemonModal = () => {
 	const bodyElement = document.querySelector("body");
 	bodyElement.insertAdjacentElement("afterBegin", sectionElement);
 
+	if (!themeIsLight) {
+		document
+			.querySelector(".pokemon__modal--details")
+			.classList.add("theme--dark");
+
+		document.querySelector(".details__navbar").classList.add("theme--dark");
+	}
+
 	showDetailsContent(0);
+	definePokemonMeters(clickedPokemonObject);
 	toggleBackgroundBlur();
 	toggleMobileBackground();
 };

@@ -3,7 +3,7 @@ const htmlHandler = {};
 const loadingContainer = document.querySelector(".loading__container");
 
 const btnSwitchTheme = document.getElementById("button__switchTheme");
-let themeIsLight = false;
+let themeIsLight = true;
 const moonIcon = document.getElementById("icon__moon");
 const sunIcon = document.getElementById("icon__sun");
 
@@ -18,34 +18,20 @@ htmlHandler.removeLoadingAnimation = () => {
 };
 
 btnSwitchTheme.addEventListener("click", () => {
+	document.querySelector("body").classList.toggle("theme--dark");
+	document.querySelector("main").classList.toggle("theme--dark");
+	document.querySelector("footer").classList.toggle("theme--dark");
+
 	if (themeIsLight) {
-		setDarkTheme();
+		sunIcon.style.display = "block";
+		moonIcon.style.display = "none";
 		themeIsLight = false;
 	} else {
-		setLightTheme();
+		sunIcon.style.display = "none";
+		moonIcon.style.display = "block";
 		themeIsLight = true;
 	}
 });
-
-const setDarkTheme = () => {
-	const root = document.querySelector("html");
-	root.style.setProperty("--body-bg-color", "#1a1a1a");
-	root.style.setProperty("--main-bg-color", "#2b2b2b");
-	root.style.setProperty("--text-color", "#fff");
-
-	sunIcon.style.display = "block";
-	moonIcon.style.display = "none";
-};
-
-const setLightTheme = () => {
-	const root = document.querySelector("html");
-	root.style.setProperty("--body-bg-color", "#e4e6eb");
-	root.style.setProperty("--main-bg-color", "#fff");
-	root.style.setProperty("--text-color", "#000");
-
-	sunIcon.style.display = "none";
-	moonIcon.style.display = "block";
-};
 
 const mapPokemonTypesToListItems = (types) => {
 	return types.map(
@@ -60,7 +46,7 @@ const mapPokemonStatsToListItems = (pokemonObject) => {
 
 htmlHandler.convertPokemonToListItem = (pokemon) => {
 	return `
-  <li class="pokemon__item pokemon__type--${pokemon.mainType.toLowerCase()}" onclick="showPokemonModal();">
+  <li class="pokemon__item pokemon__type--${pokemon.mainType.toLowerCase()}" onclick="showPokemonModal(themeIsLight);">
     <span class="pokemon__header">
       <span class="pokemon__name">${pokemon.name}</span>
       <span class="pokemon__number">#${pokemon.number}</span>

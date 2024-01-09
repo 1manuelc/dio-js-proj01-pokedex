@@ -79,6 +79,7 @@ ol.pokemon__modal--types li {
 .pokemon__modal--number {
 	color: #00000050;
 	font-weight: 700;
+	font-size: 2.4rem;
 }
 
 .pokemon__modal--image {
@@ -95,14 +96,19 @@ ol.pokemon__modal--types li {
 .pokemon__modal--details {
 	height: 100%;
 	width: 100%;
-	border-radius: 2rem;
+	border-radius: 2rem 2rem 0 0;
 
 	position: relative;
 	bottom: 0;
 
-	background-color: #fff;
+	background-color: var(--main-light-color);
 
 	overflow: auto;
+}
+
+.pokemon__modal--details.theme--dark {
+	background-color: var(--main-dark-color);
+	color: var(--text-dark-color);
 }
 
 .pokemon__modal--type {
@@ -127,7 +133,11 @@ ol.pokemon__modal--types li {
 }
 
 .details__navbar ul li:is(.active) {
-	color: #000;
+	color: var(--text-light-color);
+}
+
+.details__navbar.theme--dark ul li:is(.active) {
+	color: var(--text-dark-color);
 }
 
 .details__navbar ul {
@@ -146,7 +156,7 @@ ol.pokemon__modal--types li {
 	position: relative;
 
 	height: 2px;
-	background-color: #dbdbdb;
+	background-color: #a2a2a250;
 }
 
 #details__divider--current {
@@ -163,7 +173,7 @@ ol.pokemon__modal--types li {
 	border-radius: 5rem;
 	background: #6c79db;
 
-	transition: left .35s ease-in-out;
+	transition: left 0.35s ease-in-out;
 }
 
 .details__content {
@@ -196,7 +206,7 @@ ul.meters {
 
 ul.description {
 	grid-area: desc;
-	color: #1d1c1c;
+	color: inherit;
 	font-weight: 500;
 }
 
@@ -225,11 +235,17 @@ ul.description {
 	height: 0.6rem;
 
 	border-radius: 2rem;
-	background-color: #d6d6d6;
+	background-color: #a2a2a250;
 }
 
-.meters li :is(.currentMeter) {
-	width: 45%;
+.currentMeter {
+	animation: meter-grow 1s ease-in-out;
+}
+
+@keyframes meter-grow {
+	from {
+		width: 0%;
+	}
 }
 
 .meters li .bg__range--bad {
