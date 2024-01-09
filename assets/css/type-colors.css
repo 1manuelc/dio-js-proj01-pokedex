@@ -17,6 +17,15 @@
 	--color-type-flying: #a98ff0;
 	--color-type-electric: #f7cf2e;
 	--color-type-fairy: #f9aec7;
+
+	--hightlight-color: #5562d0;
+	--highlighter-color: #6a73b8;
+	--highlight-click-color: #444e9f;
+	--disabled-color: #8d8d8d;
+	--bad-meter-color: #ff0000; /* under 35% */
+	--medium-meter-color: #ff8a00; /* above 35% and under 50% */
+	--good-meter-color: #93c850; /* above 50% and under 75% */
+	--excellent-meter-color: #2eb223; /* above 75% */
 }
 
 .pokemon__type--normal {

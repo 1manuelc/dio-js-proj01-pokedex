@@ -6,14 +6,14 @@ let offset = 0;
 const maxItems = 151;
 
 async function loadPokemons(offset, limit) {
-	htmlHandler.addLoadingAnimation();
+	htmlHandler.toggleLoadingAnimation();
 
 	const pokemonList = await apiHandler.getPokemons(offset, limit);
 	listContainer.innerHTML += pokemonList
 		.map(htmlHandler.convertPokemonToListItem)
 		.join("");
 
-	htmlHandler.removeLoadingAnimation();
+	htmlHandler.toggleLoadingAnimation();
 }
 
 btnLoadMore.addEventListener("click", () => {
@@ -23,7 +23,6 @@ btnLoadMore.addEventListener("click", () => {
 	if (itemsOnPage >= maxItems) {
 		const lastLimit = maxItems - offset;
 		loadPokemons(offset, lastLimit);
-
 		btnLoadMore.setAttribute("disabled", "");
 		btnLoadMore.innerHTML = "End of the Pokedex list!";
 	} else {

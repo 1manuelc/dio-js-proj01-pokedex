@@ -4,28 +4,17 @@ const loadingContainer = document.querySelector(".loading__container");
 
 const btnSwitchTheme = document.getElementById("button__switchTheme");
 let themeIsLight = true;
-const moonIcon = document.querySelector("i.fa-moon");
 
-htmlHandler.addLoadingAnimation = () => {
-	loadingContainer.style.display = "flex";
-	btnLoadMore.style.display = "none";
-};
-
-htmlHandler.removeLoadingAnimation = () => {
-	loadingContainer.style.display = "none";
-	btnLoadMore.style.display = "block";
+htmlHandler.toggleLoadingAnimation = () => {
+	loadingContainer.classList.toggle("is--invisible");
+	btnLoadMore.classList.toggle("is--invisible");
 };
 
 btnSwitchTheme.addEventListener("click", () => {
 	document.querySelector("body").classList.toggle("theme--dark");
 	document.querySelector("main").classList.toggle("theme--dark");
 	document.querySelector("footer").classList.toggle("theme--dark");
-
-	if (themeIsLight) {
-		themeIsLight = false;
-	} else {
-		themeIsLight = true;
-	}
+	themeIsLight = themeIsLight ? false : true;
 });
 
 const mapPokemonTypesToListItems = (types) => {

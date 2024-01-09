@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap");
 @import url("./pokedex.css");
 @import url("./pokemon-modal.css");
+@import url("type-colors.css");
 
 :root {
 	font-size: 62.5%;
@@ -15,16 +16,7 @@
 	--main-light-color: #fff;
 	--text-light-color: #000;
 
-	--hightlight-color: #6c79db;
-	--highlighter-color: #626dbd;
-	--highlight-click-color: #4f5798;
-	--disabled-color: #8d8d8d;
-	--bad-meter-color: #ff0000; /* under 35% */
-	--medium-meter-color: #ff8a00; /* above 35% and under 50% */
-	--good-meter-color: #93c850; /* above 50% and under 75% */
-	--excellent-meter-color: #2eb223; /* above 75% */
-
-	--theme-switch-transition: background-color 0.2s ease;
+	--theme-switch-transition: background-color 0.1s ease;
 }
 
 * {
@@ -34,24 +26,23 @@
 
 	list-style: none;
 	border: 0;
-}
 
-* {
 	font-family: "Roboto", sans-serif;
 	font-size: 1.6rem;
 }
 
 body {
+	min-height: 100vh;
+	
 	display: flex;
 	flex-flow: column;
 	justify-content: center;
 	align-items: center;
-	transition: var(--theme-switch-transition);
-}
-
-body {
+	
 	background-color: var(--body-light-color);
 	color: var(--text-light-color);
+	
+	transition: var(--theme-switch-transition);
 }
 
 body.theme--dark {
@@ -60,37 +51,30 @@ body.theme--dark {
 }
 
 main {
-	background-color: var(--main-light-color);
+	width: calc(100% - 4rem);
+	padding: 2rem 2rem 4rem 2rem;
+
+	transition: var(--theme-switch-transition);
 }
 
-main.theme--dark {
-	background-color: var(--main-dark-color);
-}
-
+main,
 footer {
-	color: var(--text-light-color);
 	background-color: var(--main-light-color);
+	color: var(--text-light-color);
 	transition: var(--theme-switch-tranisition);
 }
 
+main.theme--dark,
 footer.theme--dark {
-	color: var(--text-dark-color);
 	background-color: var(--main-dark-color);
-}
-
-button {
-	cursor: pointer;
-}
-
-.is--invisible {
-	display: none;
+	color: var(--text-dark-color);
 }
 
 footer {
 	width: 100%;
 	height: 10rem;
-	margin-top: 4rem;
 	padding: 2rem 0;
+	border-top: #d0d0d0 0.2rem solid;
 
 	display: flex;
 	flex-flow: column;
@@ -98,6 +82,10 @@ footer {
 	align-items: center;
 
 	text-align: center;
+}
+
+footer.theme--dark {
+	border-top: #4d4d4d 0.2rem solid;
 }
 
 footer a {
@@ -112,16 +100,10 @@ footer a:focus {
 	color: var(--highlight-click-color);
 }
 
-@media screen and (max-width: 860px) {
-	body {
-		height: auto;
-		background-color: var(--main-bg-color);
-	}
+button {
+	cursor: pointer;
 }
 
-@media screen and (min-width: 860px) {
-	body {
-		justify-content: space-between;
-		height: 100vh;
-	}
+.is--invisible {
+	display: none;
 }
