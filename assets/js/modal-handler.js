@@ -18,7 +18,7 @@ const buildPokemonModal = (pokemonObject) => {
 
 					<span class="pokemon__typeContainer">
 						<ol class="pokemon__modal--types">
-							${mapPokemonTypesToListItems(pokemonObject.types).join("")}
+							${mapPokemonTypesToListItems(pokemonObject.types).join('')}
 						</ol>
 					</span>
 				</div>
@@ -58,7 +58,7 @@ const buildPokemonModal = (pokemonObject) => {
 		0
 	)}cm)</li>
 							<li>${pokemonObject.weight}kg</li>
-              <li>${pokemonObject.abilities.map((ab) => ab).join(", ")}.</li>
+              <li>${pokemonObject.abilities.map((ab) => ab).join(', ')}.</li>
 						</ul>
 					</div>
 
@@ -74,7 +74,7 @@ const buildPokemonModal = (pokemonObject) => {
 						</ul>
 
 						<ul class="values">
-							${mapPokemonStatsToListItems(pokemonObject).join("")}
+							${mapPokemonStatsToListItems(pokemonObject).join('')}
 						</ul>
 
 						<ul class="meters">
@@ -95,7 +95,7 @@ const buildPokemonModal = (pokemonObject) => {
 					<div class="details__content--moves">
 						<p>(${pokemonObject.moves.length})\n${pokemonObject.moves
 		.map((mv) => mv)
-		.join(", ")}.</p>
+		.join(', ')}.</p>
 					</div>
 				</div>
 			</div>
@@ -104,10 +104,11 @@ const buildPokemonModal = (pokemonObject) => {
 };
 
 const classificateStatInterval = (stat) => {
-	if (stat < 35) return "bg__range--bad";
-	else if (stat < 50) return "bg__range--medium";
-	else if (stat < 75) return "bg__range--good";
-	else return "bg__range--excellent";
+	console.log(stat);
+	if (stat < 35) return 'bg__range--bad';
+	else if (stat < 50) return 'bg__range--medium';
+	else if (stat < 75) return 'bg__range--good';
+	else return 'bg__range--excellent';
 };
 
 const definePokemonMeters = (pokemonObject) => {
@@ -133,33 +134,33 @@ const definePokemonMeters = (pokemonObject) => {
 
 const toggleMobileBackground = () => {
 	if (window.innerWidth < 700) {
-		document.querySelector("main").classList.toggle("is--invisible");
-		document.querySelector("footer").classList.toggle("is--invisible");
+		document.querySelector('main').classList.toggle('is--invisible');
+		document.querySelector('footer').classList.toggle('is--invisible');
 	}
 };
 
 const showPokemonModal = (themeIsLight) => {
 	const clickedLi = event.currentTarget;
 	const clickedPokemonName = clickedLi.innerText
-		.split("\n", 1)
+		.split('\n', 1)
 		.toString()
 		.toLowerCase();
 
 	const clickedPokemonObject = getCachedListPokemonInfos(clickedPokemonName);
 
-	sectionElement = document.createElement("section");
-	sectionElement.setAttribute("class", "bound__external");
+	sectionElement = document.createElement('section');
+	sectionElement.setAttribute('class', 'bound__external');
 	sectionElement.innerHTML = buildPokemonModal(clickedPokemonObject);
 
-	const bodyElement = document.querySelector("body");
-	bodyElement.insertAdjacentElement("afterBegin", sectionElement);
+	const bodyElement = document.querySelector('body');
+	bodyElement.insertAdjacentElement('afterBegin', sectionElement);
 
 	if (!themeIsLight) {
 		document
-			.querySelector(".pokemon__modal--details")
-			.classList.add("theme--dark");
+			.querySelector('.pokemon__modal--details')
+			.classList.add('theme--dark');
 
-		document.querySelector(".details__navbar").classList.add("theme--dark");
+		document.querySelector('.details__navbar').classList.add('theme--dark');
 	}
 
 	showDetailsContent(0);
@@ -170,8 +171,8 @@ const showPokemonModal = (themeIsLight) => {
 
 const closePokemonModal = () => {
 	document
-		.querySelector("section.bound__external")
-		.classList.add("modal--close");
+		.querySelector('section.bound__external')
+		.classList.add('modal--close');
 
 	toggleMobileBackground();
 
@@ -181,52 +182,51 @@ const closePokemonModal = () => {
 };
 
 const showDetailsContent = (option) => {
-	const aboutButton = document.querySelector("#button__about");
-	const statsButton = document.querySelector("#button__stats");
-	const movesButton = document.querySelector("#button__moves");
+	const aboutButton = document.querySelector('#button__about');
+	const statsButton = document.querySelector('#button__stats');
+	const movesButton = document.querySelector('#button__moves');
 
-	const aboutContent = document.querySelector(".details__content--about");
-	const statsContent = document.querySelector(".details__content--stats");
-	const movesContent = document.querySelector(".details__content--moves");
+	const aboutContent = document.querySelector('.details__content--about');
+	const statsContent = document.querySelector('.details__content--stats');
+	const movesContent = document.querySelector('.details__content--moves');
 
-	const contentSlider = document.querySelector("#details__divider--current");
+	const contentSlider = document.querySelector('#details__divider--current');
 
 	switch (option) {
 		case 0:
-			aboutButton.classList.add("active");
-			statsButton.classList.remove("active");
-			movesButton.classList.remove("active");
+			aboutButton.classList.add('active');
+			statsButton.classList.remove('active');
+			movesButton.classList.remove('active');
 
-			aboutContent.classList.remove("is--invisible");
-			statsContent.classList.add("is--invisible");
-			movesContent.classList.add("is--invisible");
+			aboutContent.classList.remove('is--invisible');
+			statsContent.classList.add('is--invisible');
+			movesContent.classList.add('is--invisible');
 
-			contentSlider.style.left = "0%";
-
+			contentSlider.style.left = '0%';
 			break;
+
 		case 1:
-			aboutButton.classList.remove("active");
-			statsButton.classList.add("active");
-			movesButton.classList.remove("active");
+			aboutButton.classList.remove('active');
+			statsButton.classList.add('active');
+			movesButton.classList.remove('active');
 
-			aboutContent.classList.add("is--invisible");
-			statsContent.classList.remove("is--invisible");
-			movesContent.classList.add("is--invisible");
+			aboutContent.classList.add('is--invisible');
+			statsContent.classList.remove('is--invisible');
+			movesContent.classList.add('is--invisible');
 
-			contentSlider.style.left = "39.5%";
-
+			contentSlider.style.left = '39.5%';
 			break;
+
 		case 2:
-			aboutButton.classList.remove("active");
-			statsButton.classList.remove("active");
-			movesButton.classList.add("active");
+			aboutButton.classList.remove('active');
+			statsButton.classList.remove('active');
+			movesButton.classList.add('active');
 
-			aboutContent.classList.add("is--invisible");
-			statsContent.classList.add("is--invisible");
-			movesContent.classList.remove("is--invisible");
+			aboutContent.classList.add('is--invisible');
+			statsContent.classList.add('is--invisible');
+			movesContent.classList.remove('is--invisible');
 
-			contentSlider.style.left = "80%";
-
+			contentSlider.style.left = '80%';
 			break;
 	}
 };

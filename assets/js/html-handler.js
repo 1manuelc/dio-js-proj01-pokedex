@@ -1,19 +1,19 @@
 const htmlHandler = {};
 
-const loadingContainer = document.querySelector(".loading__container");
+const loadingContainer = document.querySelector('.loading__container');
 
-const btnSwitchTheme = document.getElementById("button__switchTheme");
+const btnSwitchTheme = document.getElementById('button__switchTheme');
 let themeIsLight = true;
 
 htmlHandler.toggleLoadingAnimation = () => {
-	loadingContainer.classList.toggle("is--invisible");
-	btnLoadMore.classList.toggle("is--invisible");
+	loadingContainer.classList.toggle('is--invisible');
+	btnLoadMore.classList.toggle('is--invisible');
 };
 
-btnSwitchTheme.addEventListener("click", () => {
-	document.querySelector("body").classList.toggle("theme--dark");
-	document.querySelector("main").classList.toggle("theme--dark");
-	document.querySelector("footer").classList.toggle("theme--dark");
+btnSwitchTheme.addEventListener('click', () => {
+	document.querySelector('body').classList.toggle('theme--dark');
+	document.querySelector('main').classList.toggle('theme--dark');
+	document.querySelector('footer').classList.toggle('theme--dark');
 	themeIsLight = themeIsLight ? false : true;
 });
 
@@ -38,7 +38,7 @@ htmlHandler.convertPokemonToListItem = (pokemon) => {
 
     <div class="pokemon__main">
       <ol class="pokemon__types">
-        ${mapPokemonTypesToListItems(pokemon.types).join("")}
+        ${mapPokemonTypesToListItems(pokemon.types).join('')}
       </ol>
 
       <img
